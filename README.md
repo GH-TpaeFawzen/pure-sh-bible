@@ -151,6 +151,11 @@ trim_string() {
 }
 ```
 
+**Note:** in case `[:space:]` does not work properly,
+try replacing all of them with `$(printf ' \t\n\r\f\v')`;
+character classes such as `[:space:]` is not available on
+every POSIX-compliant environments.
+
 **Example Usage:**
 
 ```shell
@@ -208,15 +213,15 @@ John Black is my name.
 
 ```shell
 case $var in
-    *sub_string1*)
+    (*sub_string1*)
         # Do stuff
     ;;
 
-    *sub_string2*)
+    (*sub_string2*)
         # Do other stuff
     ;;
 
-    *)
+    (*)
         # Else
     ;;
 esac
@@ -228,15 +233,15 @@ esac
 
 ```shell
 case $var in
-    sub_string1*)
+    (sub_string1*)
         # Do stuff
     ;;
 
-    sub_string2*)
+    (sub_string2*)
         # Do other stuff
     ;;
 
-    *)
+    (*)
         # Else
     ;;
 esac
@@ -248,15 +253,15 @@ esac
 
 ```shell
 case $var in
-    *sub_string1)
+    (*sub_string1)
         # Do stuff
     ;;
 
-    *sub_string2)
+    (*sub_string2)
         # Do other stuff
     ;;
 
-    *)
+    (*)
         # Else
     ;;
 esac
